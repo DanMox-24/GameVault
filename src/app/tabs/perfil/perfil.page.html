@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-header">
+    <div class="avatar">
+      <ion-icon name="person"></ion-icon>
+    </div>
+    <h2>Jugador Pro</h2>
+    <p>Miembro desde 2024</p>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Estadísticas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="stat-row">
+        <span>Total de juegos</span>
+        <strong>8</strong>
+      </div>
+      <div class="stat-row">
+        <span>Completados</span>
+        <strong>3</strong>
+      </div>
+      <div class="stat-row">
+        <span>Horas jugadas</span>
+        <strong>247h</strong>
+      </div>
+      <div class="stat-row">
+        <span>Género favorito</span>
+        <strong>RPG</strong>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Configuración</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="notifications" slot="start"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
+      <ion-toggle [(ngModel)]="notificaciones" color="tertiary"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="moon" slot="start"></ion-icon>
+      <ion-label>Tema oscuro</ion-label>
+      <ion-toggle [(ngModel)]="temaOscuro" color="tertiary"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Información</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="information-circle" slot="start"></ion-icon>
+      <ion-label>
+        <h3>Versión</h3>
+        <p>1.0.0</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="code-slash" slot="start"></ion-icon>
+      <ion-label>
+        <h3>Desarrollador</h3>
+        <p>Tecnólogo en Desarrollo Móvil</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

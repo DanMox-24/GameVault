@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/biblioteca"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar juego - Encuesta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="goToList()">Ir a la Lista</ion-button>
+
+  <div class="form-header">
+    <ion-icon name="add-circle"></ion-icon>
+    <h2>Agregar Nuevo Juego</h2>
+    <p>Añade un juego a tu biblioteca personal</p>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre del juego</ion-label>
+        <ion-input [(ngModel)]="nuevoJuego.nombre" placeholder="Ej: The Witcher 3"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Plataforma</ion-label>
+        <ion-select [(ngModel)]="nuevoJuego.plataforma" placeholder="Selecciona la plataforma">
+          <ion-select-option value="PlayStation">PlayStation</ion-select-option>
+          <ion-select-option value="Xbox">Xbox</ion-select-option>
+          <ion-select-option value="PC">PC</ion-select-option>
+          <ion-select-option value="Nintendo">Nintendo Switch</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Género</ion-label>
+        <ion-select [(ngModel)]="nuevoJuego.genero" placeholder="Selecciona el género">
+          <ion-select-option value="Acción">Acción</ion-select-option>
+          <ion-select-option value="RPG">RPG</ion-select-option>
+          <ion-select-option value="Aventura">Aventura</ion-select-option>
+          <ion-select-option value="FPS">FPS</ion-select-option>
+          <ion-select-option value="Deportes">Deportes</ion-select-option>
+          <ion-select-option value="Estrategia">Estrategia</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Estado</ion-label>
+        <ion-select [(ngModel)]="nuevoJuego.estado" placeholder="¿En qué estado está?">
+          <ion-select-option value="Completado">Completado</ion-select-option>
+          <ion-select-option value="Jugando">Jugando</ion-select-option>
+          <ion-select-option value="Pendiente">Pendiente</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Calificación personal (1-5)</ion-label>
+        <ion-range [(ngModel)]="nuevoJuego.calificacion" min="1" max="5" step="1" snaps="true" pin="true">
+          <ion-icon slot="start" name="star-outline"></ion-icon>
+          <ion-icon slot="end" name="star"></ion-icon>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Notas personales</ion-label>
+        <ion-textarea [(ngModel)]="nuevoJuego.notas" rows="4" placeholder="Escribe tus comentarios sobre el juego"></ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" (click)="guardarJuego()">
+        <ion-icon name="save" slot="start"></ion-icon>
+        Guardar en Biblioteca
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="juegoGuardado" class="success-card">
+    <ion-card-header>
+      <ion-icon name="checkmark-circle"></ion-icon>
+      <ion-card-title>Juego Agregado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>{{ nuevoJuego.nombre }}</strong> ha sido agregado a tu biblioteca.</p>
+      <p><strong>Plataforma:</strong> {{ nuevoJuego.plataforma }}</p>
+      <p><strong>Género:</strong> {{ nuevoJuego.genero }}</p>
+      <p><strong>Estado:</strong> {{ nuevoJuego.estado }}</p>
+      <p><strong>Calificación:</strong> {{ nuevoJuego.calificacion }}/5</p>
+      <p *ngIf="nuevoJuego.notas"><strong>Notas:</strong> {{ nuevoJuego.notas }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

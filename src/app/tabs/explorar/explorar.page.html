@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Explorar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="explore-header">
+    <h2>Descubre juegos</h2>
+    <p>Navega por género y plataforma</p>
+  </div>
+
+  <ion-segment [(ngModel)]="segmentoSeleccionado" (ionChange)="cambiarSegmento()">
+    <ion-segment-button value="generos">
+      <ion-label>Géneros</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="plataformas">
+      <ion-label>Plataformas</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="segmentoSeleccionado === 'generos'" class="grid-container">
+    <ion-card *ngFor="let genero of generos" button>
+      <ion-card-content>
+        <ion-icon [name]="genero.icono"></ion-icon>
+        <h3>{{ genero.nombre }}</h3>
+        <p>{{ genero.cantidad }} juegos</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="segmentoSeleccionado === 'plataformas'" class="grid-container">
+    <ion-card *ngFor="let plataforma of plataformas" button>
+      <ion-card-content>
+        <ion-icon [name]="plataforma.icono"></ion-icon>
+        <h3>{{ plataforma.nombre }}</h3>
+        <p>{{ plataforma.cantidad }} juegos</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

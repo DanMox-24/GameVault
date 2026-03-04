@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mi Biblioteca</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header-section">
+    <h2>GameVault</h2>
+    <p>Gestiona tu colección de videojuegos</p>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Resumen</ion-card-subtitle>
+      <ion-card-title>{{ totalJuegos }} Juegos en total</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="stats">
+        <div class="stat-item">
+          <ion-icon name="checkmark-circle"></ion-icon>
+          <span>Completados: {{ completados }}</span>
+        </div>
+        <div class="stat-item">
+          <ion-icon name="play-circle"></ion-icon>
+          <span>Jugando: {{ jugando }}</span>
+        </div>
+        <div class="stat-item">
+          <ion-icon name="time"></ion-icon>
+          <span>Pendientes: {{ pendientes }}</span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="action-buttons">
+    <ion-button expand="block" (click)="verListaCompleta()">
+      <ion-icon name="list" slot="start"></ion-icon>
+      Ver Lista Completa
+    </ion-button>
+    <ion-button expand="block" fill="outline" (click)="agregarJuego()">
+      <ion-icon name="add-circle" slot="start"></ion-icon>
+      Agregar Juego
+    </ion-button>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Últimos agregados</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let juego of ultimosJuegos">
+      <ion-icon [name]="getIconoPlatforma(juego.plataforma)" slot="start"></ion-icon>
+      <ion-label>
+        <h3>{{ juego.nombre }}</h3>
+        <p>{{ juego.genero }} • {{ juego.plataforma }}</p>
+      </ion-label>
+      <ion-badge [color]="getColorEstado(juego.estado)" slot="end">
+        {{ juego.estado }}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

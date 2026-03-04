@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/biblioteca"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de VideoJuegos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="filter-section">
+    <ion-segment [(ngModel)]="filtroSeleccionado" (ionChange)="aplicarFiltro()">
+      <ion-segment-button value="todos">
+        <ion-label>Todos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="completados">
+        <ion-label>Completados</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="jugando">
+        <ion-label>Jugando</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let juego of juegosFiltrados" lines="full">
+      <div class="game-cover" slot="start"></div>
+      <ion-label>
+        <h2>{{ juego.nombre }}</h2>
+        <p class="game-info">
+          <ion-icon [name]="getIconoPlatforma(juego.plataforma)"></ion-icon>
+          {{ juego.plataforma }} • {{ juego.genero }}
+        </p>
+        <p class="game-year">{{ juego.anio }}</p>
+        <div class="rating">
+          <ion-icon *ngFor="let star of getEstrellas(juego.calificacion)" name="star"></ion-icon>
+        </div>
+      </ion-label>
+      <ion-badge [color]="getColorEstado(juego.estado)" slot="end">
+        {{ juego.estado }}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>
