@@ -1,0 +1,7 @@
+{
+  "name": "GameVault",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
